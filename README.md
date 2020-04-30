@@ -1,6 +1,6 @@
 # Front End Libraries Projects
 
-Simple front-end projecs as part of fcc curriculum. Done with *Vue*, though. 
+Simple front-end projecs as part of fcc curriculum. Done with **Vue**, though. 
 
 ### Project Homepages:
 
