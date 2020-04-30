@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Random Quote Machine</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Random Quote Machine</h1>
+      <div id="quote-box">
+        <div id="text">{{ quote }}</div>
+        <div id="author">- {{ author }}</div>
+        <button id="new-quote" @click="getQuote">New quote</button>
+        <!-- <a href="twitter.com/intent/tweet" id="tweet-quote">Tweet quote</a> -->
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

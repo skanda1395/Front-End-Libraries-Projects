@@ -1,0 +1,55 @@
+body {
+  font-family: "EB Garamond", sans-serif;
+  margin: 0;
+}
+
+#app {
+  position: relative;
+  width: 50vw;
+  margin: auto;
+  min-width: 300px;
+  top: 23vh;
+}
+
+#quote-box {
+  padding: 23px;
+  background-color: #041e31;
+  height: auto;
+  transition: height 2s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); /* make it your own */
+}
+
+#text {
+  font-size: 2em;
+  font-weight: 500;
+  color: #ac905d;
+}
+
+#text::before,
+#text::after {
+  content: '"';
+}
+
+#author {
+  text-transform: capitalize;
+  text-align: right;
+  color: #fff;
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+#new-quote {
+  padding: 13px;
+  color: #000;
+  background-color: #ac905d;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+h1 {
+  color: #041e31;
+  text-decoration: underline #ac905d;
+  text-align: center;
+}
