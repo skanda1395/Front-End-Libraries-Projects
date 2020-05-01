@@ -14,8 +14,8 @@ let app = new Vue({
           return response.json();
         })
         .then((data) => {
-          this.quote = data.en;
-          this.author = data.author;
+          this.quote = '"' + data.en + '"';
+          this.author = "- " + data.author;
         })
         .catch((error) => {
           console.error(
