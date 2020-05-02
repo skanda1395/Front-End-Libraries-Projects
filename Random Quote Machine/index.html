@@ -8,9 +8,14 @@
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Random Quote Machine</title>
   </head>
+
   <body>
     <div id="app">
       <h1>Random Quote Machine</h1>
@@ -18,7 +23,7 @@
         <div id="text">{{ quote }}</div>
         <div id="author">{{ author }}</div>
         <button id="new-quote" @click="getQuote">New Quote</button>
-        <!-- <a href="twitter.com/intent/tweet" id="tweet-quote">Tweet quote</a> -->
+        <a :href="tweetQuote" class="fa fa-twitter" target="_blank"></a>
       </div>
     </div>
     <script src="main.js"></script>

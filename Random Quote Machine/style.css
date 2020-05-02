@@ -4,7 +4,7 @@ body {
 
 #app {
   position: relative;
-  top: 23vh;
+  top: 19vh;
   margin: auto;
 }
 
@@ -28,8 +28,8 @@ body {
   margin-top: 7px;
 }
 
-#new-quote {
-  color: #000;
+button {
+  color: #041e31;
   background-color: #ac905d;
   border: none;
   cursor: pointer;
@@ -45,6 +45,22 @@ h1 {
   text-align: center;
 }
 
+.fa {
+  margin-left: 5px;
+  padding: 0.57em;
+  font-size: 1.2em;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa-twitter {
+  background: #ac905d;
+  color: #041e31;
+}
+
+/* media queries to position quote box */
+
 @media (min-width: 800px) {
   #app {
     width: 50vw;
@@ -53,14 +69,20 @@ h1 {
 
 @media (max-width: 450px) {
   body {
-    font-size: 13px;
+    font-size: 14px;
   }
   #app {
     top: 13vh;
   }
-  #new-quote {
+  #new-quote,
+  a {
     position: fixed;
     bottom: 10px;
+  }
+  #new-quote {
     right: 10px;
+  }
+  a {
+    left: 10px;
   }
 }

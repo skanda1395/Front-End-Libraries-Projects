@@ -15,7 +15,7 @@ let app = new Vue({
         })
         .then((data) => {
           this.quote = '"' + data.en + '"';
-          this.author = "- " + data.author;
+          this.author = " - " + data.author;
         })
         .catch((error) => {
           console.error(
@@ -23,6 +23,15 @@ let app = new Vue({
             error
           );
         });
+    },
+  },
+  computed: {
+    tweetQuote() {
+      return (
+        "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=" +
+        this.quote +
+        this.author
+      );
     },
   },
   mounted: function () {
