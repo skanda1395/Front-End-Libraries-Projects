@@ -33,6 +33,9 @@ let app = new Vue({
         this.author
       );
     },
+    getHeight() {
+      return document.getElementById("quote-box").style.padding;
+    },
   },
   mounted: function () {
     this.getQuote();

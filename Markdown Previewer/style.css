@@ -1,4 +1,81 @@
-textarea {
-  width: 500px;
-  height: 300px;
+#title {
+  background: -webkit-linear-gradient(#34495e, #42b983);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#title,
+.box-title {
+  text-align: center;
+}
+
+#editor {
+  width: 95%;
+  min-height: 550px;
+}
+
+#preview {
+  height: 550px;
+  overflow: auto;
+}
+
+.box {
+  width: 45%;
+}
+
+#app {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+p code {
+  background: #f8f8f8;
+}
+
+pre {
+  background: #f8f8f8;
+  padding: 5px;
+  border-left: 5px solid #42b983;
+}
+
+img {
+  height: 150px;
+  width: 150px;
+}
+
+blockquote {
+  border-left: 3px solid #041e31;
+}
+
+blockquote p {
+  padding-left: 5px;
+}
+/* width */
+#preview::-webkit-scrollbar,
+#editor::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media (max-width: 750px) {
+  #app {
+    flex-direction: column;
+  }
+  .box {
+    width: 100%;
+  }
 }

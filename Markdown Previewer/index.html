@@ -3,15 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.2/build/styles/googlecode.min.css"
+    />
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.2/build/highlight.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Markdown Previewer</title>
   </head>
   <body>
+    <h1 id="title">Markdown Previewer</h1>
     <div id="app">
-      <textarea id="editor" v-model="userData"></textarea>
-      <div id="preview" v-html="updatePreview"></div>
+      <div class="box">
+        <h3 class="box-title">EDITOR</h3>
+        <label for="editor">Start typing your markdown here.</label>
+        <textarea id="editor" v-model="userData"></textarea>
+      </div>
+      <div class="box">
+        <h3 class="box-title">PREVIEW</h3>
+        <label for="">Check out the preview here.</label>
+        <div id="preview" v-html="updatePreview"></div>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>
