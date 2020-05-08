@@ -20,11 +20,11 @@ confirmEnding("Bastian", "n");
 #### HTML
 
 \`\`\`
-  < nav id = "nav-bar" >
-    <a class="nav-link" href="#how_it_works">Concept</a>
-    <a class="nav-link" href="#products_section">Products</a>
-    <a class="nav-link" href="#contact_section">Contact</a>
-</nav >
+<nav id="nav-bar">
+ <a class="nav-link" href="#how_it_works">Concept</a>
+ <a class="nav-link" href="#products_section">Products</a>
+ <a class="nav-link" href="#contact_section">Contact</a>
+</nav>
 \`\`\`
 
 ### Ordered List:
