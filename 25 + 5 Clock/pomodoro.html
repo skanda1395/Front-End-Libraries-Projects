@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pomodoro.css">
+  <title>Pomodoro Timer</title>
+</head>
+<body>
+  <h2>Pomodoro Timer</h2>
+  <hr>
+  <main>
+    <div id="timer" class="hide"> 
+      <p>Time left: <span id="time-left"></span></p>
+      <input type="button" value="Cancel" id="cancel">
+    </div>
+
+    <form>
+      <p>Select a time chunk:</p>
+      <div class="input-group">
+        <input type="radio" name="time" value="2" id="twenty" checked>
+        <label for="twenty">2 min</label>
+      </div>
+      <div class="input-group">
+        <input type="radio" name="time" value="4" id="forty">
+        <label for="forty">4 min</label>
+      </div>
+      <div class="input-group">
+        <input type="radio" name="time" value="6" id="sixty">
+        <label for="sixty">6 min</label>
+      </div>
+      <div id="btns">
+        <input type="submit" value="Get to work!" id="submit">
+      </div>
+    </form>
+    
+  </main>
+
+  <div class="clock"></div>
+
+
+  <script src="pomodoro.js"></script>
+</body>
+</html>
