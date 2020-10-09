@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- development version, includes helpful console warnings -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <title>25 + 5 Clock</title>
+  <title>FCC: 25 + 5 Clock</title>
 </head>
 <body>
  
@@ -29,12 +29,12 @@
     </div>
 
     <div id="timer-label">
-      <h3>Session</h3>
+      <h3>{{ sessionType }}</h3>
       <p id="time-left">{{ timeLeft }}</p>
     </div>
 
     <div id="cta_btns">
-      <button id="start_stop">▶ | ⏸</button>
+      <button id="start_stop" @click="startOrPause">▶ | ⏸</button>
       <button id="reset" @click="reset">🔄</button>
     </div>
   </div>
