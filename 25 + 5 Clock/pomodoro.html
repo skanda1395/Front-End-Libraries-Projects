@@ -3,42 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pomodoro.css">
-  <title>Pomodoro Timer</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>25 + 5 Clock</title>
 </head>
 <body>
-  <h2>Pomodoro Timer</h2>
-  <hr>
-  <main>
-    <div id="timer" class="hide"> 
-      <p>Time left: <span id="time-left"></span></p>
-      <input type="button" value="Cancel" id="cancel">
+ 
+  <div id="app">
+    <h1>25 + 5 Clock ⏳</h1>
+
+    <div id="break-label">
+      <p>Break Length:
+        <span id="break-length">{{ breakLength }}</span>
+      </p>
+      <button id="break-increment" @click="increment('breakLength')">➕</button>
+      <button id="break-decrement" @click="decrement('breakLength')">➖</button>
     </div>
 
-    <form>
-      <p>Select a time chunk:</p>
-      <div class="input-group">
-        <input type="radio" name="time" value="2" id="twenty" checked>
-        <label for="twenty">2 min</label>
-      </div>
-      <div class="input-group">
-        <input type="radio" name="time" value="4" id="forty">
-        <label for="forty">4 min</label>
-      </div>
-      <div class="input-group">
-        <input type="radio" name="time" value="6" id="sixty">
-        <label for="sixty">6 min</label>
-      </div>
-      <div id="btns">
-        <input type="submit" value="Get to work!" id="submit">
-      </div>
-    </form>
-    
-  </main>
+    <div id="session-label">
+      <p>Session Length:
+        <span id="session-length">{{ sessionLength }}</span>
+      </p>
+      <button id="session-increment"@click="increment('sessionLength')">➕</button>
+      <button id="session-decrement" @click="decrement('sessionLength')">➖</button>
+    </div>
 
-  <div class="clock"></div>
+    <div id="timer-label">
+      <h3>Session</h3>
+      <p id="time-left">{{ timeLeft }}</p>
+    </div>
 
+    <div id="cta_btns">
+      <button id="start_stop">▶ | ⏸</button>
+      <button id="reset" @click="reset">🔄</button>
+    </div>
+  </div>
 
-  <script src="pomodoro.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
