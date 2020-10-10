@@ -18,6 +18,7 @@ new Vue({
       this.sessionLength = this.sessionLength === "25"? 25: "25";
       this.sessionType = "Session";
       this.sessionStarted = false;
+      this. $refs.alarm.currentTime = 0;
     },
     increment(length) {
       if(this[length] < 60) {
@@ -39,23 +40,24 @@ new Vue({
         this.countdown = counterTime * 60;
         this.seconds = 60;
         this.timerId = setInterval(this.timer, 1000);
+        this. $refs.alarm.currentTime = 0;
       }
     },
     timer() {
-      console.log("Timer was called", this.isPaused, this.countdown);
-
       if(!this.isPaused) {
         this.countdown--;
         this.seconds--;
-  
+        
         let minutes = Math.floor(this.countdown / 60);
-      
+        
         this.timeLeft = `${minutes}:${this.seconds}`;
         
         if(!this.countdown) {
           // play beep sound
+          this. $refs.alarm.currentTime = 0;
+          this. $refs.alarm.play();
           clearInterval(this.timerId);
-          alert("Time's up! Take a break and come back.");
+          console.log("Time's up! Take a break and come back.");
           this.sessionStarted = false;
           // break countdown
           if(this.sessionType == "Session") {
@@ -79,6 +81,17 @@ new Vue({
       if(val == 0) {
         this.seconds = 60;
       }
+    }
+  },
+  filters: {
+    timeFormat(value) {
+      let time = String(value).split(":", 2);
+      let [minutes, seconds] = [time[0], time[1]];
+      
+      if(minutes.length == 1) minutes = "0" + minutes;
+      if(seconds.length == 1) seconds = "0" + seconds;
+
+      return `${minutes}:${seconds}`;
     }
   }
 });
