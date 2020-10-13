@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- development version, includes helpful console warnings -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <title>FCC: Drum Machine</title>
 </head>
 <body>
+  <header>
+    <h1>Drum Machine 🥁</h1>
+  </header>
   
   <div id="drum-machine">
-    <h1>Drum Machine</h1>
 
-    <p id="display">Display: {{ display }}</p>
+    <p id="display">{{ display }}</p>
 
     <div class="drum-pads">
       <button class="drum-pad" v-for="clip in audio" :data-key="clip.padName" :id="clip.audioName" @click="play">
