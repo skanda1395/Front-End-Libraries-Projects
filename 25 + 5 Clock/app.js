@@ -36,11 +36,11 @@ new Vue({
       }
       else {
         this.sessionStarted = true;
-        let counterTime = (this.sessionType == "Session")? this.sessionLength: this.breakLength;
+        let counterTime = this.currentSessionLength;
         this.countdown = counterTime * 60;
         this.seconds = 60;
         this.timerId = setInterval(this.timer, 1000);
-        this. $refs.alarm.currentTime = 0;
+        this.$refs.alarm.currentTime = 0;
       }
     },
     timer() {
@@ -49,7 +49,6 @@ new Vue({
         this.seconds--;
         
         let minutes = Math.floor(this.countdown / 60);
-        
         this.timeLeft = `${minutes}:${this.seconds}`;
         
         if(!this.countdown) {
@@ -57,21 +56,30 @@ new Vue({
           this. $refs.alarm.currentTime = 0;
           this. $refs.alarm.play();
           clearInterval(this.timerId);
-          console.log("Time's up! Take a break and come back.");
           this.sessionStarted = false;
+
           // break countdown
           if(this.sessionType == "Session") {
-            console.log("Break Time!");
             this.sessionType = "Break";
           }
           else {
-            console.log("Session Time!");
             this.sessionType = "Session";
           }
           this.startOrPause();
         }
       }
     },
+  },
+  computed: {
+    currentSessionLength() {
+      return (this.sessionType == "Session")? this.sessionLength: this.breakLength;
+    },
+    progress() {
+      let progressPercent = this.countdown / (this.currentSessionLength * 60);
+      console.log(progressPercent);
+      let progressStrokeLength = progressPercent * (2 * Math.PI * 40);
+      this.$refs["progress-bar"].style["stroke-dashoffset"] = progressStrokeLength;
+    }
   },
   watch: {
     sessionLength(val) {
@@ -93,5 +101,5 @@ new Vue({
 
       return `${minutes}:${seconds}`;
     }
-  }
-});
+  },
+  });
