@@ -27,7 +27,7 @@
           <button id="break-increment" @click="increment('breakLength')">➕</button>
         </div>
       </div>
-  
+
       <div id="session-label" class="timer-setting">
         <p>Session Length</p>
         <div>
@@ -39,12 +39,12 @@
     </div>
 
     <div v-else id="timer-container">
-      <h3 id="timer-label">{{ sessionType }}</h3>
+      <h2 id="timer-label">{{ sessionType }}</h2>
       <div id="time-progress">
         <p id="time-left">{{ timeLeft | timeFormat }}</p>
         <svg>
-          <circle class="progress-outer" cx="50" cy="50" r="40"></circle>
-          <circle class="progress-inner" ref="progress-bar" cx="50" cy="50" r="40"></circle>
+          <circle class="progress-outer" cx="75" cy="75" r="60"></circle>
+          <circle class="progress-inner" ref="progress-bar" cx="75" cy="75" r="60"></circle>
         </svg> 
       </div>
   

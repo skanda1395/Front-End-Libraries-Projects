@@ -75,7 +75,7 @@ const app = new Vue({
     },
     progress() {
       let progressPercent = this.countdown / (this.currentSessionLength * 60);
-      let progressStrokeLength = progressPercent * (2 * Math.PI * 40);
+      let progressStrokeLength = progressPercent * (2 * Math.PI * 60);
       this.$refs["progress-bar"].style["stroke-dashoffset"] = progressStrokeLength;
     },
     strokeLength() {

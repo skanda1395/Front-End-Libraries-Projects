@@ -1,5 +1,6 @@
 :root {
-  --circumference: calc(2 * (22 / 7) * 40);
+  --circumference: calc(2 * (22 / 7) * 60);
+  --tomato: tomato;
 }
   
 * {
@@ -11,11 +12,12 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
+  font-family: "Courier New", Courier, monospace;
 }
 
 h1 {
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 0;
   right: 0;
   margin: auto;
@@ -37,10 +39,25 @@ h1 {
 
 .timer-setting span {
   margin: 0 9px;
+  color: var(--tomato);
+  font-weight: bold;
 }
 
 .timer-setting p {
   margin-top: 5px;
+  font-size: 1.25em;
+}
+
+#settings {
+  height: 255px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.timer-setting {
+  border: none;
 }
 
 #time-progress {
@@ -53,32 +70,44 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 1.5em;
 }
 
+#timer-label {
+  margin: 0.32em 0;
+}
+
+/* tabs styles */
 #tabs {
   display: flex;
   justify-content: space-around;
   background: lightgrey;
+  font-size: 1.23em;
 }
 
 .active-tab {
-  border-bottom: 3px solid tomato;
+  border-bottom: 3px solid var(--tomato);
 }
 
 .tab {
   cursor: pointer;
 }
 
+/* buttons style */
+#cta_btns button {
+  padding: 0.5em 0.75em;
+}
+
 /* styles for the circular progress */
 
 svg{
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   transform: rotate(-90deg);
 }
 
 svg circle {
-  stroke-width: 5;
+  stroke-width: 3;
   fill: none;
   stroke-linecap: butt;
 } 
@@ -88,7 +117,7 @@ svg .progress-outer {
 }
 
 svg .progress-inner {
-  stroke: #d8503a;
+  stroke: var(--tomato);
   stroke-dasharray: var(--circumference);
   stroke-dashoffset: var(--circumference);
   transition: stroke-dashoffset 500ms;
