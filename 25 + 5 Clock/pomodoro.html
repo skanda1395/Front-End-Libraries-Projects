@@ -12,38 +12,48 @@
   
   <div id="app">
     <h1>25 + 5 Clock ⏳</h1>
+
+    <div id="tabs" @click="toggleTab">
+      <p :class="['tab', timerTab? 'active-tab': '']">Timer</p>
+      <p :class="['tab', timerTab? '': 'active-tab']">Settings</p>
+    </div>
     
-    <div id="break-label" class="timer-setting">
-      <p>Break Length</p>
-      <div>
-        <button id="break-decrement" @click="decrement('breakLength')">➖</button>
-        <span id="break-length">{{ breakLength }}</span>
-        <button id="break-increment" @click="increment('breakLength')">➕</button>
+    <div id="settings" v-if="!timerTab">  
+      <div id="break-label" class="timer-setting">
+        <p>Break Length</p>
+        <div>
+          <button id="break-decrement" @click="decrement('breakLength')">➖</button>
+          <span id="break-length">{{ breakLength }}</span>
+          <button id="break-increment" @click="increment('breakLength')">➕</button>
+        </div>
+      </div>
+  
+      <div id="session-label" class="timer-setting">
+        <p>Session Length</p>
+        <div>
+          <button id="session-decrement" @click="decrement('sessionLength')">➖</button>
+          <span id="session-length">{{ sessionLength }}</span>
+          <button id="session-increment"@click="increment('sessionLength')">➕</button>
+        </div>
       </div>
     </div>
 
-    <div id="session-label" class="timer-setting">
-      <p>Session Length</p><div>
-        <button id="session-decrement" @click="decrement('sessionLength')">➖</button>
-        <span id="session-length">{{ sessionLength }}</span>
-        <button id="session-increment"@click="increment('sessionLength')">➕</button>
+    <div v-else id="timer-container">
+      <h3 id="timer-label">{{ sessionType }}</h3>
+      <div id="time-progress">
+        <p id="time-left">{{ timeLeft | timeFormat }}</p>
+        <svg>
+          <circle class="progress-outer" cx="50" cy="50" r="40"></circle>
+          <circle class="progress-inner" ref="progress-bar" cx="50" cy="50" r="40"></circle>
+        </svg> 
+      </div>
+  
+      <div id="cta_btns">
+        <button id="start_stop" @click="startOrPause">▶ | ⏸</button>
+        <button id="reset" @click="reset">🔄</button>
       </div>
     </div>
 
-    <div id="timer-label">
-      <h3>{{ sessionType }}</h3>
-      <p id="time-left">{{ timeLeft | timeFormat }}</p>
-
-      <svg>
-        <circle class="progress-outer" cx="50" cy="50"></circle>
-        <circle class="progress-inner" ref="progress-bar" cx="50" cy="50"></circle>
-      </svg> 
-    </div>
-
-    <div id="cta_btns">
-      <button id="start_stop" @click="startOrPause">▶ | ⏸</button>
-      <button id="reset" @click="reset">🔄</button>
-    </div>
 
     <!-- Sound from Zapsplat.com -->
     <audio id="beep" ref="alarm">

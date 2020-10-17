@@ -1,4 +1,4 @@
-new Vue({
+const app = new Vue({
   el: "#app",
   data: {
     breakLength: 5,
@@ -9,16 +9,18 @@ new Vue({
     isPaused: false,
     sessionStarted: false,
     seconds: null,
-    sessionType: "Session"
+    sessionType: "Session",
+    timerTab: true
   },
   methods: {
     reset() {
       clearInterval(this.timerId)
+      this.sessionStarted = false;
       this.breakLength = 5;
       this.sessionLength = this.sessionLength === "25"? 25: "25";
       this.sessionType = "Session";
-      this.sessionStarted = false;
       this. $refs.alarm.currentTime = 0;
+      this.$refs["progress-bar"].style["stroke-dashoffset"] = this.strokeLength();
     },
     increment(length) {
       if(this[length] < 60) {
@@ -50,6 +52,8 @@ new Vue({
         
         let minutes = Math.floor(this.countdown / 60);
         this.timeLeft = `${minutes}:${this.seconds}`;
+
+        this.progress();
         
         if(!this.countdown) {
           // play beep sound
@@ -69,16 +73,27 @@ new Vue({
         }
       }
     },
+    progress() {
+      let progressPercent = this.countdown / (this.currentSessionLength * 60);
+      let progressStrokeLength = progressPercent * (2 * Math.PI * 40);
+      this.$refs["progress-bar"].style["stroke-dashoffset"] = progressStrokeLength;
+    },
+    strokeLength() {
+      return (2 * (22 / 7) * this.$refs["progress-bar"].getAttribute("r"));
+    },
+    toggleTab(e) {
+      if(e.target.classList.contains("tab")) {
+        let activeTab = document.querySelector(".active-tab");
+        if(e.target == activeTab) return;
+        else {
+          this.timerTab = e.target.textContent == "Timer";
+        }
+      }
+    }
   },
   computed: {
     currentSessionLength() {
       return (this.sessionType == "Session")? this.sessionLength: this.breakLength;
-    },
-    progress() {
-      let progressPercent = this.countdown / (this.currentSessionLength * 60);
-      console.log(progressPercent);
-      let progressStrokeLength = progressPercent * (2 * Math.PI * 40);
-      this.$refs["progress-bar"].style["stroke-dashoffset"] = progressStrokeLength;
     }
   },
   watch: {

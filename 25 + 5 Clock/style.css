@@ -1,6 +1,5 @@
 :root {
-  --radius: 40;
-  --circumference: calc(2 * (22 / 7) * var(--radius));
+  --circumference: calc(2 * (22 / 7) * 40);
 }
   
 * {
@@ -27,11 +26,11 @@ h1 {
   width: 90%;
   max-width: 700px;;
   text-align: center;
-}
-
-.timer-setting, #timer-label {
   max-width: 300px;
   margin: 10px auto;
+}
+
+.timer-setting, #timer-container {
   padding: 10px 5px;
   border: 1px solid black;
 }
@@ -44,7 +43,35 @@ h1 {
   margin-top: 5px;
 }
 
-#timer-label svg{
+#time-progress {
+  position: relative;
+}
+
+#time-left {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#tabs {
+  display: flex;
+  justify-content: space-around;
+  background: lightgrey;
+}
+
+.active-tab {
+  border-bottom: 3px solid tomato;
+}
+
+.tab {
+  cursor: pointer;
+}
+
+/* styles for the circular progress */
+
+svg{
   width: 100px;
   height: 100px;
   transform: rotate(-90deg);
@@ -54,7 +81,6 @@ svg circle {
   stroke-width: 5;
   fill: none;
   stroke-linecap: butt;
-  r: var(--radius);
 } 
 
 svg .progress-outer {
@@ -65,4 +91,5 @@ svg .progress-inner {
   stroke: #d8503a;
   stroke-dasharray: var(--circumference);
   stroke-dashoffset: var(--circumference);
+  transition: stroke-dashoffset 500ms;
 }
