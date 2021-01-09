@@ -6,7 +6,7 @@ let app = new Vue({
   },
   methods: {
     getQuote() {
-      fetch("https://programming-quotes-api.herokuapp.com/quotes/random")
+      fetch("https://api.quotable.io/random?tags=science")
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -14,7 +14,8 @@ let app = new Vue({
           return response.json();
         })
         .then((data) => {
-          this.quote = '"' + data.en + '"';
+          console.log(data.tags);
+          this.quote = '"' + data.content + '"';
           this.author = " - " + data.author;
         })
         .catch((error) => {
@@ -22,6 +23,7 @@ let app = new Vue({
             "There has been a problem with your fetch operation:",
             error
           );
+          this.quote = "Oops, try again.";
         });
     },
   },
